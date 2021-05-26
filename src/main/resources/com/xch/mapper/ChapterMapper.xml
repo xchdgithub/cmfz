@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xch.dao.ChapterMapper">
+    <!--修专辑信息-->
+    <update id="updateOneChapter" parameterType="Chapter">
+        update Chapter
+        <set>
+            <if test="title!=null">title=#{title},</if>
+            <if test="src!=null">src=#{src},</if>
+            <if test="duration!=null">duration=#{duration},</if>
+            <if test="size!=null">size=#{size},</if>
+            <if test="uploadTime!=null">upload_time=#{uploadTime},</if>
+            <if test="albumId!=null">album_id=#{albumId},</if>
+        </set>
+        where id=#{id}
+    </update>
+</mapper>

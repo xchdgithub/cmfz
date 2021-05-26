@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xch.dao.ArticleMapper">
+    <!--修改轮播图信息-->
+    <update id="updateOneArticle" parameterType="Article">
+        update Article
+        <set>
+            <if test="title!=null">title=#{title},</if>
+            <if test="uploadTime!=null">upload_time=#{uploadTime},</if>
+            <if test="guruName!=null">guru_name=#{guruName},</if>
+            <if test="content!=null">content=#{content},</if>
+        </set>
+        where id=#{id}
+    </update>
+</mapper>
+<!--id,title,uploadTime,guruName,content-->

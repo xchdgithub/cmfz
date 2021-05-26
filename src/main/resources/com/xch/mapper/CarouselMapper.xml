@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xch.dao.CarouselMapper">
+    <!--分页展示-->
+    <select id="selectCarousel" parameterType="Integer" resultType="Carousel">
+        select id,title,description,img_path imgPath,status,crate_time crateTime
+        from carousel
+        limit ${(page-1)*rows},#{rows}
+    </select>
+
+    <!--查询总页数-->
+    <select id="selectCarouselTotalCount" resultType="Integer">
+        select count(*) from carousel
+    </select>
+
+    <!--修改轮播图信息-->
+    <update id="updateCarousel" parameterType="Carousel">
+        update carousel
+        <set>
+            <if test="title!=null">title=#{title},</if>
+            <if test="description!=null">description=#{description},</if>
+            <if test="imgPath!=null">img_path=#{imgPath},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="crateTime!=null">crate_time=#{crateTime}</if>
+        </set>
+        where id=#{id}
+    </update>
+</mapper>

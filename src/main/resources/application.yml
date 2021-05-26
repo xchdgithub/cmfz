@@ -1,0 +1,24 @@
+server:
+  port: 8088
+  servlet:
+    context-path: /cmfz
+    jsp:
+      init-parameters:
+        development: true
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cmfz
+    username: root
+    password: root
+  servlet:
+    multipart:
+      max-file-size: 50MB     #默认1MB
+      max-request-size: 100MB #
+mybatis:
+  type-aliases-package: com.xch.entity
+  mapper-locations: classpath:com/xch/mapper/*Mapper.xml

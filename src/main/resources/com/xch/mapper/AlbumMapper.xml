@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xch.dao.AlbumMapper">
+    <!--分页展示-->
+    <select id="selectAlbum" parameterType="Integer" resultType="Album">
+        select id,title,cover_img coverImg,score,author,broadcast,count,content,pub_date pubDate
+        from album
+        limit ${(page-1)*rows},#{rows}
+    </select>
+
+
+    <!--修改轮播图信息-->
+    <update id="updateOneAlbum" parameterType="Album">
+        update album
+        <set>
+            <if test="title!=null">title=#{title},</if>
+            <if test="coverImg!=null">cover_img=#{coverImg},</if>
+            <if test="score!=null">score=#{score},</if>
+            <if test="author!=null">author=#{author},</if>
+            <if test="broadcast!=null">broadcast=#{broadcast},</if>
+            <if test="count!=null">count=#{count},</if>
+            <if test="pubDate!=null">pub_date=#{pubDate}</if>
+        </set>
+        where id=#{id}
+    </update>
+</mapper>

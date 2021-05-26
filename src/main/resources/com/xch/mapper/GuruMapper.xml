@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xch.dao.GuruMapper">
+    <!--修改上师信息-->
+    <update id="updateOneGuru" parameterType="Guru">
+        update Guru
+        <set>
+            <if test="name!=null">name=#{name},</if>
+            <if test="picImg!=null">pic_img=#{picImg},</if>
+            <if test="username!=null">username=#{username},</if>
+            <if test="password!=null">password=#{password},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="salt!=null">salt=#{salt},</if>
+            <if test="regTime!=null">reg_time=#{regTime},</if>
+        </set>
+        where id=#{id}
+    </update>
+</mapper>
